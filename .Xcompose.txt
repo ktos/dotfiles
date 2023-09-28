@@ -1,0 +1,13 @@
+<Multi_key> <a> <c> <z> : "ʈ͡ʂ" # ANDRO CZ
+<Multi_key> <a> <y> <i> : "ʏ" # ANDRO YI
+<Multi_key> <'> <'> : "ˈ" # IPA ACCENT
+<Multi_key> <'> <,> : "ˌ" # IPA SECONDARY ACCENT
+<Multi_key> <n> <,> : "ŋ" U+014B # IPA NASAL N
+<Multi_key> <a> <n> <d> : "And́royas" # And́royas
+<Multi_key> <n> <e> <k> <o>: "猫" # neko
+<Multi_key> <f> <o> <x>: "キツネ" # kitsune
+<Multi_key> <r> <e> <f>: "※" # U+203B REFERENCE MARK
+<Multi_key> <d> <e> <g>: "°" # degree
+<Multi_key> <x> <i> <n>: "心" # heart, xin
+<Multi_key> <t> <a> <n> <a> <k> <a>: "田中" # tanaka
+<Multi_key> <y> <a> <m> <a> <g> <u> <c> <h> <i>: "山口" # yamaguchi

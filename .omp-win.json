@@ -1,0 +1,117 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+        {
+            "alignment": "left",
+            "segments": [
+                {
+                    "type": "os",
+                    "style": "powerline",
+                    "foreground": "#26C6DA",
+                    "background": "#546E7A",
+                    "template": "{{ if .WSL }}\uF17C\uE62A{{ end }}"
+                },
+                {
+                    "foreground": "#FFFFFF",
+                    "background": "#D75F00",
+                    "style": "diamond",
+                    "leading_diamond": "",
+                    "trailing_diamond": " ",
+                    "template": "\ue0a2 ",
+                    "type": "root"
+                },
+                {
+                    "foreground": "#FFFFFF",
+                    "background": "#7E46B6",
+                    "style": "diamond",
+                    "template": "{{ if .SSHSession }}\uf066 {{ .UserName }}@{{ .HostName }}{{ end }}",
+                    "type": "session",
+                    "leading_diamond": "",
+                    "trailing_diamond": " "
+                },
+                {
+                    "foreground": "#5FD7FF",
+                    "properties": {
+                        "branch_ahead_icon": "",
+                        "branch_behind_icon": "",
+                        "branch_gone_icon": "",
+                        "branch_icon": "\ue725 ",
+                        "branch_identical_icon": "",
+                        "cherry_pick_icon": "",
+                        "commit_icon": "",
+                        "fetch_status": true,
+                        "merge_icon": "",
+                        "rebase_icon": "",
+                        "revert_icon": "",
+                        "tag_icon": ""
+                    },
+                    "style": "plain",
+                    "template": "({{ .HEAD }}){{ if .Staging.Changed }}<#87FF00> {{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }}<#D75F00> {{ .Working.String }}</>{{ end }} ",
+                    "type": "git"
+                },
+                {
+                    "type": "dotnet",
+                    "style": "diamond",
+                    "leading_diamond": "",
+                    "trailing_diamond": " ",
+                    "powerline_symbol": "",
+                    "foreground": "#000000",
+                    "background": "#00ffff",
+                    "template": " \ue70c {{ .Full }} ",
+                    "properties": {
+                        "display_mode": "files"
+                    }
+                },
+                {
+                    "type": "python",
+                    "style": "diamond",
+                    "leading_diamond": "",
+                    "trailing_diamond": " ",
+                    "foreground": "#100e23",
+                    "background": "#dfd5ff",
+                    "template": "  {{ .Full }}",
+                    "properties": {
+                        "display_mode": "files"
+                    }
+                },
+                {
+                    "type": "python",
+                    "style": "diamond",
+                    "leading_diamond": "",
+                    "trailing_diamond": " ",
+                    "foreground": "#100e23",
+                    "background": "#906cff",
+                    "template": "  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
+                    "properties": {
+                        "display_mode": "environment"
+                    }
+                },
+                {
+                    "type": "shell",
+                    "style": "plain",
+                    "template": "{{ if not (eq \"cmd\" .Name) }}{{.Name}} {{end}}",
+                    "properties": {
+                        "mapped_shell_names": {
+                            "pwsh": "PS"
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "style": "full"
+                    },
+                    "style": "plain",
+                    "template": "{{ .Location }}",
+                    "type": "path"
+                },
+                {
+                    "style": "plain",
+                    "template": "{{ if (or (eq \"pwsh\" .Name) (eq \"cmd\" .Name)) }}>{{else}}$ {{end}}",
+                    "type": "shell"
+                }
+            ],
+            "type": "prompt"
+        }
+    ],
+    "version": 2
+}

@@ -1,0 +1,29 @@
+[init]
+  	defaultBranch = master
+[core]
+	autocrlf = input
+	editor = code --wait
+	quotepath = false
+	safecrlf = false
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	br = branch
+	sw = switch
+	mm = merge --no-ff
+	df = diff
+	dft = difftool
+	lg = log -10 --pretty=format:'%C(yellow)%h%Creset %C(magenta)%d%Creset %s %Cgreen(%cr) %Creset'
+	lgg = log --oneline --all --graph
+[push]
+	default = simple
+[difftool]
+	prompt = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[include]
+  path = ~/.gitconfig.local
