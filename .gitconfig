@@ -17,6 +17,7 @@
 	dft = difftool
 	lg = log -10 --pretty=format:'%C(yellow)%h%Creset %C(magenta)%d%Creset %s %Cgreen(%cr) %Creset'
 	lgg = log --oneline --all --graph
+	msq = merge --squash --edit
 [push]
 	default = simple
 [difftool]
