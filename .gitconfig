@@ -6,6 +6,7 @@
 	quotepath = false
 	safecrlf = false
 [alias]
+	s = status --short
 	st = status
 	ci = commit
 	co = checkout
