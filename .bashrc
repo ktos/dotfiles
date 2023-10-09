@@ -51,7 +51,7 @@ alias grep='grep --color=auto'
 alias ddu='du -h --max-depth=1 .'
 
 # load aliases and options specific for Windows and Linux
-if [ "$(uname)" = "Linux" ]; then
+if [ "$(uname -s)" = "Linux" ]; then
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias ll='ls -alF'

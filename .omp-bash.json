@@ -90,7 +90,20 @@
                 },
                 {
                     "type": "session",
-                    "template": "{{ .UserName }}@{{ .HostName }}",
+                    "template": "{{ if ne \"ktos\" .UserName}}<u>{{ .UserName }}</u>{{ end }}",
+                    "foreground": "#d70000",
+                    "style": "plain"
+                },
+                {
+                    "type": "session",
+                    "template": "{{ if eq \"ktos\" .UserName}}{{ .UserName }}{{ end }}",
+                    "foreground": "#b5ff6a",
+                    "style": "plain"
+                },
+                {
+                    "style": "plain",
+                    "type": "session",
+                    "template": "@{{ .HostName }}",
                     "foreground": "#b5ff6a"
                 },
                 {
