@@ -4,6 +4,11 @@ if [ -n "$BASH_VERSION" ]; then
     if [ -f "$HOME/.bashrc" ]; then
     . "$HOME/.bashrc"
     fi
+
+    # include local (not-tracked) .bashrc if it exists
+    if [ -f "$HOME/.bashrc.local" ]; then
+    . "$HOME/.bashrc.local"
+    fi
 fi
 
 # set PATH so it includes user's private bin if it exists
