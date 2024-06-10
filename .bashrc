@@ -72,7 +72,12 @@ if [ "$(uname -s)" = "Linux" ]; then
     stty start undef
 
     # initialize oh-my-posh
-    eval "$(oh-my-posh init bash --config ~/.omp-bash.json)"    
+    eval "$(oh-my-posh init bash --config ~/.omp-bash.json)"
+
+    # initialize ble.sh
+    if [ -f ~/.local/share/blesh/ble.sh ]; then
+      source ~/.local/share/blesh/ble.sh
+    fi
 else
     alias ls='lsd'
     alias ll='lsd -lh'
