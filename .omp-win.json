@@ -101,7 +101,7 @@
                         "style": "full"
                     },
                     "style": "plain",
-                    "template": "{{ .Location }}",
+                    "template": "{{ (path .Path .Location) | replace \"~\" \"C:\\\\Users\\\\ktos\" }}",
                     "type": "path"
                 },
                 {
