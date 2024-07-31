@@ -80,28 +80,30 @@ if [ "$(uname -s)" = "Linux" ]; then
     fi
 
     # initialize WSL bridges to Windows SSH and GPG
-    export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
-    if ! ss -a | grep -q "$SSH_AUTH_SOCK"; then
-      rm -f "$SSH_AUTH_SOCK"
-      wsl2_ssh_bridge_bin="$HOME/.ssh/wsl2-ssh-bridge.exe"
-      if test -x "$wsl2_ssh_bridge_bin"; then
-        (setsid nohup socat UNIX-LISTEN:"$SSH_AUTH_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin" >/dev/null 2>&1 &)
-      else
-        echo >&2 "WARNING: $wsl2_ssh_bridge_bin is not executable."
+    if [ -f $HOME/.ssh/wsl2-ssh-bridge.exe ]; then
+      export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
+      if ! ss -a | grep -q "$SSH_AUTH_SOCK"; then
+        rm -f "$SSH_AUTH_SOCK"
+        wsl2_ssh_bridge_bin="$HOME/.ssh/wsl2-ssh-bridge.exe"
+        if test -x "$wsl2_ssh_bridge_bin"; then
+          (setsid nohup socat UNIX-LISTEN:"$SSH_AUTH_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin" >/dev/null 2>&1 &)
+        else
+          echo >&2 "WARNING: $wsl2_ssh_bridge_bin is not executable."
+        fi
+        unset wsl2_ssh_bridge_bin
       fi
-      unset wsl2_ssh_bridge_bin
-    fi
 
-    export GPG_AGENT_SOCK="$HOME/.gnupg/S.gpg-agent"
-    if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
-      rm -rf "$GPG_AGENT_SOCK"
-      wsl2_ssh_bridge_bin="$HOME/.ssh/wsl2-ssh-bridge.exe"
-      if test -x "$wsl2_ssh_bridge_bin"; then
-        (setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin --gpg S.gpg-agent" >/dev/null 2>&1 &)
-      else
-        echo >&2 "WARNING: $wsl2_ssh_bridge_bin is not executable."
+      export GPG_AGENT_SOCK="$HOME/.gnupg/S.gpg-agent"
+      if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
+        rm -rf "$GPG_AGENT_SOCK"
+        wsl2_ssh_bridge_bin="$HOME/.ssh/wsl2-ssh-bridge.exe"
+        if test -x "$wsl2_ssh_bridge_bin"; then
+          (setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin --gpg S.gpg-agent" >/dev/null 2>&1 &)
+        else
+          echo >&2 "WARNING: $wsl2_ssh_bridge_bin is not executable."
+        fi
+        unset wsl2_ssh_bridge_bin
       fi
-      unset wsl2_ssh_bridge_bin
     fi
 else
     alias ls='lsd'
