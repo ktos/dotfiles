@@ -18,6 +18,8 @@
 	lg = log -10 --pretty=format:'%C(yellow)%h%Creset %C(magenta)%d%Creset %s %Cgreen(%cr) %Creset'
 	lgg = log --oneline --all --graph
 	msq = merge --squash --edit
+	out = log @{u}.. --oneline
+
 [push]
 	default = simple
 [difftool]
@@ -31,3 +33,5 @@
   path = ~/.gitconfig.local
 [pull]
 	rebase = true
+[merge]
+	conflictstyle = zdiff3
