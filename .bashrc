@@ -72,7 +72,9 @@ if [ "$(uname -s)" = "Linux" ]; then
     stty start undef
 
     # initialize oh-my-posh
-    eval "$(oh-my-posh init bash --config ~/.omp-bash.json)"
+    if [ -f ~/.local/bin/oh-my-posh ]; then
+      eval "$(oh-my-posh init bash --config ~/.omp-bash.json)"
+    fi
 
     # initialize ble.sh if exists
     if [ -f ~/.local/share/blesh/ble.sh ]; then
