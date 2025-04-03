@@ -1,120 +1,138 @@
 {
-    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
-    "blocks": [
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
         {
-            "alignment": "left",
-            "segments": [
-                {
-                    "type": "os",
-                    "style": "powerline",
-                    "foreground": "#26C6DA",
-                    "template": "{{ if .WSL }}\uF17C\uE62A{{ end }}"
-                },
-                {
-                    "foreground": "#FFFFFF",
-                    "background": "#D75F00",
-                    "style": "diamond",
-                    "leading_diamond": "",
-                    "trailing_diamond": " ",
-                    "template": "\ue0a2 ",
-                    "type": "root"
-                },
-                {
-                    "foreground": "#FFFFFF",
-                    "background": "#7E46B6",
-                    "style": "diamond",
-                    "template": "{{ if .SSHSession }}\uf066 {{ .UserName }}@{{ .HostName }}{{ end }}",
-                    "type": "session",
-                    "leading_diamond": "",
-                    "trailing_diamond": " "
-                },
-                {
-                    "foreground": "#5FD7FF",
-                    "properties": {
-                        "branch_ahead_icon": "",
-                        "branch_behind_icon": "",
-                        "branch_gone_icon": "",
-                        "branch_icon": "\ue725 ",
-                        "branch_identical_icon": "",
-                        "cherry_pick_icon": "",
-                        "commit_icon": "",
-                        "fetch_status": true,
-                        "merge_icon": "",
-                        "rebase_icon": "",
-                        "revert_icon": "",
-                        "tag_icon": ""
-                    },
-                    "style": "plain",
-                    "template": "({{ .HEAD }}){{ if .Staging.Changed }}<#87FF00> {{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }}<#D75F00> {{ .Working.String }}</>{{ end }} ",
-                    "type": "git"
-                },
-                {
-                    "type": "dotnet",
-                    "style": "diamond",
-                    "leading_diamond": "",
-                    "trailing_diamond": " ",
-                    "powerline_symbol": "",
-                    "foreground": "#000000",
-                    "background": "#00ffff",
-                    "template": " \ue70c {{ .Full }} ",
-                    "properties": {
-                        "display_mode": "files"
-                    }
-                },
-                {
-                    "type": "python",
-                    "style": "diamond",
-                    "leading_diamond": "",
-                    "trailing_diamond": " ",
-                    "foreground": "#100e23",
-                    "background": "#dfd5ff",
-                    "template": "  {{ .Full }}",
-                    "properties": {
-                        "display_mode": "files"
-                    }
-                },
-                {
-                    "type": "python",
-                    "style": "diamond",
-                    "leading_diamond": "",
-                    "trailing_diamond": " ",
-                    "foreground": "#100e23",
-                    "background": "#906cff",
-                    "template": "  {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
-                    "properties": {
-                        "display_mode": "environment"
-                    }
-                },
-                {
-                    "type": "shell",
-                    "style": "plain",
-                    "template": "{{ if not (eq \"cmd\" .Name) }}{{.Name}} {{end}}",
-                    "properties": {
-                        "mapped_shell_names": {
-                            "pwsh": "PS"
-                        }
-                    },
-                    "foreground": "#26C6DA"
-                },
-                {
-                    "properties": {
-                        "style": "full",
-                        "folder_separator_icon": "/"
-                    },
-                    "style": "plain",
-                    "template": "{{ .Path }}",
-                    "type": "path",
-                    "foreground": "#3b78ff"
-                },
-                {
-                    "style": "plain",
-                    "foreground": "#FFFFFF",
-                    "template": "{{ if (or (eq \"pwsh\" .Name) (eq \"cmd\" .Name)) }}>{{else}}$ {{end}}",
-                    "type": "shell"
-                }
-            ],
-            "type": "prompt"
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if .WSL }}\uf17c\ue62a{{ end }}",
+          "foreground": "#26C6DA",
+          "type": "os",
+          "style": "powerline"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0 ",
+          "template": "\ue0a2 ",
+          "foreground": "#FFFFFF",
+          "background": "#D75F00",
+          "type": "root",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0 ",
+          "template": "{{ if .SSHSession }}\uf066 {{ .UserName }}@{{ .HostName }}{{ end }}",
+          "foreground": "#FFFFFF",
+          "background": "#7E46B6",
+          "type": "session",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "branch_ahead_icon": "",
+            "branch_behind_icon": "",
+            "branch_gone_icon": "",
+            "branch_icon": "\ue725 ",
+            "branch_identical_icon": "",
+            "cache_duration": "none",
+            "cherry_pick_icon": "",
+            "commit_icon": "",
+            "fetch_status": true,
+            "merge_icon": "",
+            "rebase_icon": "",
+            "revert_icon": "",
+            "tag_icon": ""
+          },
+          "template": "({{ .HEAD }}){{ if .Staging.Changed }}<#87FF00> {{ .Staging.String }}</>{{ end }}{{ if .Working.Changed }}<#D75F00> {{ .Working.String }}</>{{ end }} ",
+          "foreground": "#5FD7FF",
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "files"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0 ",
+          "template": " \ue70c {{ .Full }} ",
+          "foreground": "#000000",
+          "powerline_symbol": "\ue0b0",
+          "background": "#00ffff",
+          "type": "dotnet",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "files"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0 ",
+          "template": " \ue235 {{ .Full }}",
+          "foreground": "#100e23",
+          "background": "#dfd5ff",
+          "type": "python",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "display_mode": "environment"
+          },
+          "leading_diamond": "\ue0b6",
+          "trailing_diamond": "\ue0b0 ",
+          "template": " \ue235 {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}",
+          "foreground": "#100e23",
+          "background": "#906cff",
+          "type": "python",
+          "style": "diamond"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "mapped_shell_names": {
+              "pwsh": "PS"
+            }
+          },
+          "template": "{{ if not (eq \"cmd\" .Name) }}{{.Name}} {{end}}",
+          "foreground": "#26C6DA",
+          "type": "shell",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "folder_separator_icon": "/",
+            "style": "full"
+          },
+          "template": "{{ .Path }}",
+          "foreground": "#3b78ff",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "{{ if (or (eq \"pwsh\" .Name) (eq \"cmd\" .Name)) }}>{{else}}$ {{end}}",
+          "foreground": "#FFFFFF",
+          "type": "shell",
+          "style": "plain"
         }
-    ],
-    "version": 2
+      ]
+    }
+  ],
+  "version": 3
 }
