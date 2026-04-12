@@ -99,12 +99,14 @@ if [ "$(uname -s)" = "Linux" ]; then
       if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
         rm -rf "$GPG_AGENT_SOCK"
         wsl2_ssh_bridge_bin="$HOME/.ssh/wsl2-ssh-bridge.exe"
+        config_path="C:/Users/ktos/AppData/Local/gnupg"
         if test -x "$wsl2_ssh_bridge_bin"; then
-          (setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin --gpg S.gpg-agent" >/dev/null 2>&1 &)
+          (setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin -gpgConfigBasepath ${config_path} -gpg S.gpg-agent -verbose -logfile $HOME/bridge.log" >/dev/null 2>&1 &)
         else
           echo >&2 "WARNING: $wsl2_ssh_bridge_bin is not executable."
         fi
         unset wsl2_ssh_bridge_bin
+        unset config_path
       fi
     fi
 else
