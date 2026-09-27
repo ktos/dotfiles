@@ -5,6 +5,14 @@
 	editor = code --wait
 	quotepath = false
 	safecrlf = false
+	pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    side-by-side = true
+
 [alias]
 	s = status --short
 	st = status
@@ -35,3 +43,5 @@
 	rebase = true
 [merge]
 	conflictstyle = zdiff3
+[credential "https://gitea.cs.pollub.pl"]
+	provider = generic
