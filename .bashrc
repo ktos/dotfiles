@@ -57,6 +57,8 @@ if [ "$(uname -s)" = "Linux" ]; then
     alias ll='ls -alF'
     alias ddu='du -h --max-depth=1 .'
     alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+    alias issh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
+    alias iscp='scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 
     export EDITOR=vim    
     export TERM=xterm-256color
