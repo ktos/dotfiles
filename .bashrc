@@ -86,7 +86,7 @@ if [ "$(uname -s)" = "Linux" ]; then
     # initialize WSL bridges to Windows SSH and GPG
     if [ -f $HOME/.ssh/wsl2-ssh-bridge.exe ]; then
       export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
-      if ! ss -a | grep -q "$SSH_AUTH_SOCK"; then
+      if ! ss -xa | grep -qF "$SSH_AUTH_SOCK"; then
         rm -f "$SSH_AUTH_SOCK"
         wsl2_ssh_bridge_bin="$HOME/.ssh/wsl2-ssh-bridge.exe"
         if test -x "$wsl2_ssh_bridge_bin"; then
@@ -98,8 +98,8 @@ if [ "$(uname -s)" = "Linux" ]; then
       fi
 
       export GPG_AGENT_SOCK="$HOME/.gnupg/S.gpg-agent"
-      if ! ss -a | grep -q "$GPG_AGENT_SOCK"; then
-        rm -rf "$GPG_AGENT_SOCK"
+      if ! ss -xa | grep -qF "$GPG_AGENT_SOCK"; then
+        rm -f "$GPG_AGENT_SOCK"
         wsl2_ssh_bridge_bin="$HOME/.ssh/wsl2-ssh-bridge.exe"
         if test -x "$wsl2_ssh_bridge_bin"; then
           (setsid nohup socat UNIX-LISTEN:"$GPG_AGENT_SOCK,fork" EXEC:"$wsl2_ssh_bridge_bin --gpg S.gpg-agent" >/dev/null 2>&1 &)
